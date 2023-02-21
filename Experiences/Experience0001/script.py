@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request, redirect, url_for
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -24,3 +24,15 @@ def experience0001():
 def show_subpath(subpath):
     # show the subpath after /path/
     return f'Subpath {escape(subpath)}'
+
+@app.route('/experience0001/login', methods=['POST'])
+def login():
+    print(request.method)
+    if request.method == 'POST':
+        data = request.json
+        return data
+
+@app.route('/experience0001/redirection')
+def redirection():
+    return redirect(url_for('experience0001'))
+
