@@ -36,3 +36,9 @@ def login():
 def redirection():
     return redirect(url_for('experience0001'))
 
+@app.route('/experience0001/logs')
+def logging():
+    app.logger.debug('This is a test logger')
+    app.logger.warning('This is a test warning')
+    app.logger.error('This is a test error')
+    return 'Test'
